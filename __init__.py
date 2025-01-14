@@ -31,6 +31,8 @@ def start_timer(dummy):
 
     app_version = "Blender " + bpy.app.version_string
 
+    small_image = GPUName
+    small_text = GPUName
     large_image = "blender"
     large_text = app_version
     start_time = int(round(time.time() * 1000))
