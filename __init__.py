@@ -30,17 +30,17 @@ def start_timer(dummy):
     global app_version, GPUName, small_image, small_text, large_image, large_text, details, state, start_time
 
     app_version = "Blender " + bpy.app.version_string
+    
+    try:
+        GPUName = bpy.context.preferences.addons["cycles"].preferences.devices[0].name
+    except (KeyError, IndexError, AttributeError):
+        GPUName = "Unknown GPU"
 
     small_image = GPUName
     small_text = GPUName
     large_image = "blender"
     large_text = app_version
     start_time = int(round(time.time() * 1000))
-    
-    try:
-        GPUName = bpy.context.preferences.addons["cycles"].preferences.devices[0].name
-    except (KeyError, IndexError, AttributeError):
-        GPUName = "Unknown GPU"
     
     bpy.app.timers.register(update)
     print("Start timer")
