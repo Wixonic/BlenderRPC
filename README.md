@@ -1,5 +1,5 @@
 # BlenderRPC
-> 
+> Blender add-on for [WixiBot](https://github.com/Wixonic/WixiBot) RPC.
 
 [![Wakatime](https://wakatime.com/badge/github/Wixonic/BlenderRPC.svg?style=flat)](https://wakatime.com/badge/github/Wixonic/BlenderRPC)
 
