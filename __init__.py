@@ -41,9 +41,7 @@ def render_started(dummy):
     total_frames = scene.frame_end - scene.frame_start + 1
     
     start_time = int(round(time.time() * 1000))
-    update(details=f"Rendering on {GPUName}", state=f"Rendering {total_frames} frames", 
-           large_image="blender-render", large_text=f"Rendering {total_frames} frames", 
-           small_image="blender", small_text=app_version, start_time=start_time)
+    update(small_image="blender", small_text=app_version, large_image="blender-render", large_text=f"Rendering {total_frames} frames", details=f"Rendering on {GPUName}", state=f"Rendering {total_frames} frames")
     
     print("Render started")
 
@@ -52,8 +50,7 @@ def render_ended(dummy):
     bpy.app.timers.register(update)
     
     start_time = int(round(time.time() * 1000))
-    update(large_image="blender", large_text=app_version, small_image="blender", 
-           small_text=app_version, start_time=start_time)
+    update(large_image="blender", large_text=app_version)
     
     print("Render ended")
 
@@ -64,14 +61,11 @@ def render_frame(dummy):
     frames_done = scene.frame_current - scene.frame_start + 1
     progress_percentage = (frames_done / total_frames) * 100
     
-    update(large_image="blender-render", large_text=f"Rendering {frames_done}/{total_frames} frames", 
-           details=f"Rendering on {GPUName}", state=f"Rendering {frames_done}/{total_frames} frames", 
-           small_image="blender", small_text=f"{progress_percentage:.2f}% completed", 
-           start_time=start_time)
+    update(small_image="blender", small_text=f"{progress_percentage:.2f}% completed", large_image="blender_render", large_text=f"Rendering {frames_done}/{total_frames} frames",  details=f"Rendering on {GPUName}", state=f"Rendering {frames_done}/{total_frames} frames")
     
     print("Render frame")
 
-def update(small_image, small_text, large_image, large_text, details, state, start_time):
+def update(small_image=None, small_text=None, large_image=None, large_text=None, details=None, state=None, start_time=start_time):
     data = {
         "small_image": small_image,
         "small_text": small_text,
@@ -93,6 +87,11 @@ def update(small_image, small_text, large_image, large_text, details, state, sta
     return update_delay
 
 def register():
+    try:
+        start_timer(None)
+    except Exception as e:
+        print(f"Failed to launch: {e}")
+    
     bpy.app.handlers.load_post.append(start_timer)
     bpy.app.handlers.render_init.append(render_started)
     bpy.app.handlers.render_complete.append(render_ended)
