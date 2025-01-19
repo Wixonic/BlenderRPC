@@ -1,7 +1,7 @@
 # BlenderRPC
 > Blender add-on for [WixiBot](https://github.com/Wixonic/WixiBot) RPC.
 
-[![Wakatime](https://wakatime.com/badge/github/Wixonic/BlenderRPC.svg?style=flat)](https://wakatime.com/badge/github/Wixonic/BlenderRPC)
+[![Wakatime](https://wakatime.com/badge/github/Wixonic/BlenderRPC.svg?style=flat)](https://wakatime.com/badge/github/Wixonic/BlenderRPC) [![Patreon](https://img.shields.io/badge/Patreon-black?style=flat&logo=patreon)](https://patreon.com/Wixonic)
 
 - [Support](https://github.com/Wixonic/BlenderRPC/blob/Default/.github/SUPPORT.md)
 - [Code of Conduct](https://github.com/Wixonic/BlenderRPC/blob/Default/.github/CODE_OF_CONDUCT.md)
